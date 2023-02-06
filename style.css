@@ -9,6 +9,21 @@ body{
     overflow: hidden;
 }
 
+header{
+    width: 100%;
+    height: 10vh;
+}
+
+.nav_mio{
+    background-color: #b57ebc;
+    width: 100%;
+    height: 10vh;
+}
+
+.nav_color{
+    background-color: #b57ebc;
+}
+
 main{
     display: flex;
     justify-content: center;
@@ -149,4 +164,89 @@ main .cuadrado:nth-child(3){
 #rojo{
     color: red;
     font-weight: 700;
+}
+
+footer{
+    background-color: #50B2C0;
+    width: 100%;
+    height: 20vh;
+    align-items: center;
+    margin-top: 10%;
+}
+
+footer {
+    background-color: #b57ebc;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+  
+.social-media {
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+  
+.social-media ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+  
+.social-media ul li {
+    margin: 0px 10px;
+    margin-bottom: 2rem;
+}
+  
+.social-media ul li a {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 6px;
+    box-sizing: border-box;
+    text-decoration: none;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(0deg, #ddd, #fff);
+    transition: 0.5s;
+}
+  
+.social-media ul li a:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+  
+.social-media ul li a .icon-f {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(0deg, #fff, #ddd);
+    border-radius: 50%;
+    line-height: 48px;
+    font-size: 24px;
+    color: #262626;
+    transition: 0.5s;
+}
+  
+.social-media ul li:nth-child(1) a:hover .icon-f {
+    color: #3b5998;
+}
+  
+.social-media ul li:nth-child(2) a:hover .icon-f {
+    color: #e4405f;
+}
+
+.text-footer{
+    color: #3b5998;
+}
+
+.mainPaginaPrincipal{
+    width: 100%;
+    height: 110vh;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -26,6 +26,8 @@ function errorEnElLogin (){
     //lo agrego al document
     error.append(p)
 
+    formu.reset()
+
 }
 
 function buscarUsuarioIngresadoEnElLS (nombreDelLogin, contraDelLogin){
@@ -67,6 +69,7 @@ const botonLoginUsuario = document.getElementById('btn-login')
 const usuarioLogin = document.getElementById('usuarioLogin')
 const contraseniaLogin = document.getElementById('contraseniaLogin')
 const error = document.getElementById('loginForm')
+const formu = document.getElementById('formu')
 let usuariosEnLS = []
 
 eventoLogin()
