@@ -2,9 +2,8 @@
 
 class Alumno {
 
-    constructor(nombreApellido, mesNacimiento, anioNacimiento){
+    constructor(mesNacimiento, anioNacimiento){
 
-        this.nombreApellido = nombreApellido;
         this.mesNacimiento = mesNacimiento;
         this.anioNacimiento = anioNacimiento;
         this.cursoAlumno = 0
@@ -71,53 +70,29 @@ class Alumno {
 
 }
 
-//obtengo el usuario del local storage
-function obtenerUsuariosEnLS (){
-
-    let usuarioLS = localStorage.getItem("lista_de_usuarios")
-
-    if (usuarioLS !== null){
-
-        usuariosEnLS = JSON.parse(usuarioLS)
-
-    }
-
-    return usuariosEnLS
-
-
-}
-
 //muestro en la pagina el anio de cursada del alumno a traves de una etiqueta p
-function mostrarAnioDeCursada (){
-    
-    alumnos.forEach((alumno) => {
-        alumno.calcularCursoDelAlumno()
-        
-        const p = document.createElement('p')
-        p.innerHTML = `Usted esta en ${alumno.cursoAlumno} anio`
-        p.id = "psection2PP"
+function mostrarAnioDeCursada (alumno){
 
-        ppSection2.append(p)
-        
-    }
-    )
-    inicioDelprograma()
-    return alumnos
+    alumno.calcularCursoDelAlumno()
+       
+    const p = document.createElement('p')
+    p.innerHTML = `Usted esta en ${alumno.cursoAlumno} anio`
+    p.id = "psection2PP"
+
+    ppSection.append(p)
     
 }
 
 //creo los alumnos con los datos
 function crearAlumnos (mes, anio){
 
-    for (usuario of usuariosEnLS){
+    const alumno = new Alumno(Number(mes), Number(anio))
 
-        const alumno = new Alumno(usuario[0], mes, anio)
-        alumnos.push(alumno)
+    alumnos.push(alumno)
+    localStorage.setItem('alumnos', JSON.stringify(alumnos))
 
-    }
-
-    return alumnos
-
+    mostrarAnioDeCursada(alumno)
+    
 }
 
 //creo los inputs y el h1 
@@ -137,18 +112,17 @@ function crearInputs (){
     inputMesUsuario.type = 'number'
     inputMesUsuario.placeholder = 'Ingrese su mes de nacimiento'
     inputMesUsuario.id = 'inputMesPP'
-    const mesInputUsuario = inputMesUsuario.value
 
     //creo el input para el anio de nacimiento del alumno
     const inputAnioUsuario = document.createElement('input')
     inputAnioUsuario.type = 'number'
     inputAnioUsuario.placeholder = 'Ingrese su anio de nacimiento'
     inputAnioUsuario.id = 'inputAnioPP'
-    const anioInputUsuario = inputAnioUsuario.value
 
     //creo el boton de submit
     const btnSectionPP = document.createElement('button')
     btnSectionPP.innerHTML = 'Submit'
+    btnSectionPP.id = 'inputBotonPP'
 
     //creo el evento del boton
     btnSectionPP.addEventListener('click', (event) => {
@@ -157,7 +131,7 @@ function crearInputs (){
         event.preventDefault();
 
         //llamo a la funcion para crear los alumnos
-        crearAlumnos(mesInputUsuario, anioInputUsuario)
+        crearAlumnos(inputMesUsuario.value, inputAnioUsuario.value)
 
     })
 
@@ -175,6 +149,13 @@ function crearInputs (){
 const ppSection = document.getElementById('sectionPP')
 const ppSection2 = document.getElementById('section2PP')
 let usuariosEnLS = []
-const alumnos = []
+let nombreUser = ""
+let alumnos = JSON.parse(localStorage.getItem('alumnos')) || []
+
 
 crearInputs()
+
+//localStorage.clear()
+
+
+
